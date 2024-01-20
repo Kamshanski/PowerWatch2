@@ -1,5 +1,6 @@
 rootProject.name = "PowerWatch2"
 include(":powerwatch")
+include(":shared-power-native")
 includeBuild("convention-plugins")
 
 pluginManagement {

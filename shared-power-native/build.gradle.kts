@@ -8,15 +8,22 @@ group = "dev.kamshanski.powerwatch2"
 version = "1.0"
 
 kotlin {
-    jvm()
-
-    linuxX64 {
+    macosX64("macosIntel") {
         binaries.staticLib {
             baseName = "powerwatch"
         }
     }
-
-    mingwX64 {
+    macosArm64("macosArm") {
+        binaries.staticLib {
+            baseName = "powerwatch"
+        }
+    }
+//    linuxX64 {
+//        binaries.staticLib {
+//            baseName = "powerwatch"
+//        }
+//    }
+    mingwX64("windows") {
         binaries.staticLib {
             baseName = "powerwatch"
         }
