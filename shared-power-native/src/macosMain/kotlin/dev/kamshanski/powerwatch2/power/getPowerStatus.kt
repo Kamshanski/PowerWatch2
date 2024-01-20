@@ -1,9 +1,6 @@
 package dev.kamshanski.powerwatch2.power
 
-import dev.kamshanski.powerwatch2.model.BatteryCharge
-import dev.kamshanski.powerwatch2.model.BatteryLifeTime
-import dev.kamshanski.powerwatch2.model.BatteryLifeTime.TimeUnit
-import dev.kamshanski.powerwatch2.model.PowerStatus
+import dev.kamshanski.powerwatch2.power.BatteryLifeTime.TimeUnit
 import dev.kamshanski.powerwatch2.power.nativemapping.IOPSPowerSourceDescription
 import kotlinx.cinterop.ExperimentalForeignApi
 import platform.Foundation.CFBridgingRelease

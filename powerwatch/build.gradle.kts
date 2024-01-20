@@ -13,7 +13,8 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(libs.kotlinx.serialization.json)
-            implementation(libs.kermit)
+            implementation(project(":shared-power-core"))
+//            implementation(libs.kermit)
             implementation(libs.multiplatformSettings)
         }
 

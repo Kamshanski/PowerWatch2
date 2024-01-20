@@ -1,7 +1,5 @@
 package dev.kamshanski.powerwatch2.power
 
-import dev.kamshanski.powerwatch2.model.PowerStatus
-import dev.kamshanski.powerwatch2.power.getPowerStatus
 import kotlin.test.Test
 import kotlin.test.assertIs
 
