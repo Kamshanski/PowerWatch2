@@ -1,6 +1,6 @@
 [versions]
 
-kotlin = "1.9.21"
+kotlin = "1.9.22"
 kotlinx-serialization = "1.6.2"
 kermit = "2.0.0-RC4"
 multiplatformSettings = "1.1.1"
