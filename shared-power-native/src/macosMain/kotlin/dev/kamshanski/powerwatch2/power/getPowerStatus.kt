@@ -12,7 +12,7 @@ import kotlin.math.roundToInt
 //[{Is Present=true, Max Capacity=100, LPM Active=false, Power Source State=AC Power,      Is Charged=true, Current=-405, Battery Provides Time Remaining=true, Name=InternalBattery-0, Is Charging=false, DesignCycleCount=1000, Current Capacity=100, Transport Type=Internal, Hardware Serial Number=65FGHF5675G7689GHJ, Type=InternalBattery, BatteryHealthCondition=, BatteryHealth=Good, Optimized Battery Charging Engaged=false, Time to Empty=0 , Time to Full Charge=0, Power Source ID=123123123}]
 //[{Is Present=true, Max Capacity=100, LPM Active=false, Power Source State=Battery Power,                  Current=0,    Battery Provides Time Remaining=true, Name=InternalBattery-0, Is Charging=false, DesignCycleCount=1000, Current Capacity=100, Transport Type=Internal, Hardware Serial Number=65FGHF5675G7689GHJ, Type=InternalBattery, BatteryHealthCondition=, BatteryHealth=Good, Optimized Battery Charging Engaged=false, Time to Empty=-1, Time to Full Charge=0, Power Source ID=123123123}]
 @OptIn(ExperimentalForeignApi::class)
-actual fun getPowerStatus(): PowerStatus {
+internal actual fun getPowerStatus(): PowerStatus {
 	val snapshot = IOPSCopyPowerSourcesInfo()
 	val sourcesRef = IOPSCopyPowerSourcesList(snapshot) ?: return PowerStatus.NoPowerSourcesFound("No IOPSCopyPowerSourcesList")
 	val sources = (CFBridgingRelease(sourcesRef) as List<Map<String, Any?>?>)

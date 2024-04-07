@@ -35,21 +35,15 @@ kotlin {
 		macosIntel,
 		windows,
 	).forEach {
-
-		println("Comp $it")
-		println(it.compilations.toList())
 		it.compilations.getByName("main") {
 			cinterops {
 				val jni by creating {
 					val javaHome = File(System.getenv("JAVA_HOME") ?: System.getProperty("java.home"))
 					val javaHomeInclude = File(javaHome, "include")
 					val javaHomeIncludeDarwin = File(javaHomeInclude, "darwin")
+
 					defFile(project.file("src/nativeInterop/cinterop/jni.def"))
-//					includeDirs(project.file("src/jniHeaders"), project.file("src/jniHeaders/darwin"), )
 					packageName = "jni"
-//					compilerOpts(
-//						"-I/${javaHomeInclude.path}".also { println("Compiler opts '$it'") },
-//						"-I/${javaHomeIncludeDarwin.path}".also { println("Compiler opts '$it'") })
 					includeDirs(
 						javaHomeInclude.also { println("javaHomeInclude '$it'") },
 						javaHomeIncludeDarwin.also { println("javaHomeIncludeDarwin '$it'") },

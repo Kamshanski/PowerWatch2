@@ -11,7 +11,7 @@ import platform.windows.GetSystemPowerStatus
 import platform.windows.SYSTEM_POWER_STATUS
 
 @OptIn(ExperimentalForeignApi::class)
-actual fun getPowerStatus(): PowerStatus =
+internal actual fun getPowerStatus(): PowerStatus =
 	memScoped {
 		val powerStatus = alloc<SYSTEM_POWER_STATUS>().ptr
 		// Проверять return value не надо, т.к. функция может возвращать не 0 при несовершившейся ошибке

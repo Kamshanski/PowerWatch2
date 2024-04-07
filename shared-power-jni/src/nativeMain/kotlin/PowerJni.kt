@@ -1,6 +1,5 @@
 import dev.kamshanski.powerwatch2.json.JSON
-import dev.kamshanski.powerwatch2.power.getPowerStatus
-import dev.kamshanski.powerwatch2.result.NegotiationModel
+import dev.kamshanski.powerwatch2.power.loadPowerStatus
 import jni.JNIEnvVar
 import jni.jobject
 import jni.jstring
@@ -13,7 +12,7 @@ import kotlinx.serialization.encodeToString
 
 @CName("Java_dev_kamshanski_powerwatch2_data_jni_PowerStatusServiceJniBridge_getPowerStateJsonInternal")
 fun Java_dev_kamshanski_powerwatch2_data_jni_PowerStatusServiceJniBridge_getPowerStateJsonInternal(env: CPointer<JNIEnvVar>, obj: jobject): jstring {
-	val result = getPowerStatusResult()
+	val result = loadPowerStatus()
 	val resultJson = JSON.encodeToString(result)
 
 	val resultJString = memScoped {
@@ -22,11 +21,3 @@ fun Java_dev_kamshanski_powerwatch2_data_jni_PowerStatusServiceJniBridge_getPowe
 
 	return resultJString!!
 }
-
-internal fun getPowerStatusResult(): NegotiationModel =
-	try {
-		val status = getPowerStatus()
-		NegotiationModel.PowerStatusResult(status)
-	} catch (ex: Throwable) {
-		NegotiationModel.Error(ex)
-	}
