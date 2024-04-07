@@ -74,6 +74,7 @@ kotlin {
 		all {
 			languageSettings {
 				optIn("kotlin.experimental.ExperimentalNativeApi")
+				optIn("kotlinx.cinterop.ExperimentalForeignApi")
 //                optIn("org.jetbrains.compose.resources.ExperimentalResourceApi")
 			}
 		}

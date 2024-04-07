@@ -1,4 +1,4 @@
-package dev.kamshanski.powerwatch2.load
+package dev.kamshanski.powerwatch2.data.jni
 
 import java.io.File
 import java.io.FileNotFoundException

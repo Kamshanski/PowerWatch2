@@ -1,17 +1,21 @@
 [versions]
 
-kotlin = "1.9.22"
+kotlin = "1.9.21"
 kotlinx-serialization = "1.6.2"
 kermit = "2.0.0-RC4"
 multiplatformSettings = "1.1.1"
+compose = "1.6.0-beta01"
+coroutines = "1.8.0-RC2"
 
 [libraries]
 
+coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "coroutines" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
 multiplatformSettings = { module = "com.russhwolf:multiplatform-settings", version.ref = "multiplatformSettings" }
 
 [plugins]
+compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 
 multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

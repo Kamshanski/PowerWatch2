@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 sealed interface NegotiationModel {
 
 	@Serializable
-	data class Error(val value: String) : NegotiationModel
+	data class Error(val message: String) : NegotiationModel
 
 	@Serializable
 	data class PowerStatusResult(@Polymorphic val value: PowerStatus): NegotiationModel
@@ -19,7 +19,7 @@ sealed interface NegotiationModel {
 	companion object {
 
 		fun Error(error: Throwable) = Error(
-			value = error.stackTraceToString()
+			message = error.stackTraceToString()
 		)
 	}
 }

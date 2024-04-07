@@ -52,6 +52,7 @@ data class IOPSPowerSourceDescription(
 	val timeToFullCharge: Long?,
 
 	/** kIOPSIsChargingKey key for the current power source's charging state.
+	 * NOTE! This field changes slowly. Use powerSourceState to check charging
 	 * Providing this key is REQUIRED.
 	 * Type CFBoolean - kCFBooleanTrue or kCFBooleanFalse
 	 */

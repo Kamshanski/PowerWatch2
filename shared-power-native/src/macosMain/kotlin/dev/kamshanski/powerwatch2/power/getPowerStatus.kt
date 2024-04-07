@@ -2,6 +2,7 @@ package dev.kamshanski.powerwatch2.power
 
 import dev.kamshanski.powerwatch2.power.BatteryLifeTime.TimeUnit
 import dev.kamshanski.powerwatch2.power.nativemapping.IOPSPowerSourceDescription
+import dev.kamshanski.powerwatch2.power.nativemapping.IOPSPowerSourceState
 import kotlinx.cinterop.ExperimentalForeignApi
 import platform.Foundation.CFBridgingRelease
 import platform.IOKit.IOPSCopyPowerSourcesInfo
@@ -17,14 +18,15 @@ actual fun getPowerStatus(): PowerStatus {
 	val sources = (CFBridgingRelease(sourcesRef) as List<Map<String, Any?>?>)
 		.filterNotNull()
 		.map { IOPSPowerSourceDescription(it) }
-//		.filter { it.isPresent }                    // Only connected power sources
+		.filter { it.isPresent }                    // Only connected power sources
 
 	println(sources)
 	if (sources.isEmpty()) {
 		return PowerStatus.WireOnly
 	}
 
-	val chargingDevice = sources.firstOrNull { it.isCharging }
+	val chargingDevice = sources.firstOrNull { it.powerSourceState == IOPSPowerSourceState.ACPower && it.isCharging }
+		?: sources.firstOrNull { it.powerSourceState == IOPSPowerSourceState.ACPower }
 	if (chargingDevice != null) {
 		return PowerStatus.Autonomous.Charging(batteryChargeOf(chargingDevice))
 	}
